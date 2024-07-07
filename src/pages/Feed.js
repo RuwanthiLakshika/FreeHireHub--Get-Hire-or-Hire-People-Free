@@ -34,10 +34,8 @@ console.log(post);
   return (
     <Grid container spacing={2} sx={{ margin: "2%" }}>
       <Grid item xs={12} sx={12} md={12} lg={12}>
-      <Button sx={{ margin: "1% 2%" }} variant="outlined">
-            <Link to="/">Home</Link>
-          </Button>
-        <Box>
+      <div className="more_bt"><Link to="/"> Home</Link></div>
+        <Box style={{marginTop:"80px"}}>
           <TextField
             InputProps={{
               startAdornment: (

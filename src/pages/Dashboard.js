@@ -37,7 +37,7 @@ export default function Home() {
             <div className="container">
                 <div className="row">
                 <h1 className="best_taital">Employee Dashboard</h1>
-                <Button sx={{ margin:"2% 3%"}} variant="outlined"><Link to="/">Home</Link></Button>
+                <div className="more_bt"><Link to="/"> Home</Link></div>
                           {/* <div className="get_bt" ><a href="#">Home</a></div> */}
                           
                 </div>
