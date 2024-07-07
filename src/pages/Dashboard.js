@@ -18,11 +18,33 @@ export default function Home() {
 
   return (
     <>
-    <Box sx={{ display:"flex", flexDirection:"row", justifyContent:"center"}}>
+    {/* <Box sx={{ display:"flex", flexDirection:"row", justifyContent:"center"}}>
     <Typography variant='h3'sx={{ margin:"2%"}} align='center'>EMPLOYER DASHBOARD</Typography>
     <Button sx={{ margin:"2% 3%"}} variant="outlined"><Link to="/">Home</Link></Button>
     </Box>
     <Box sx={{ width: '100%', typography: 'body1' }}>
+      <TabContext value={value}>
+        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+          <TabList onChange={handleChange} aria-label="lab API tabs example">
+            <Tab label="Create Post" value="1" />
+          </TabList>
+        </Box>
+        <TabPanel value="1"><Create /></TabPanel>
+      </TabContext>
+    </Box> */}
+    <Box sx={{ display:"flex", flexDirection:"row", justifyContent:"center"}}>
+    <div className="portfolio_section_2 layout_padding">
+            <div className="container">
+                <div className="row">
+                <h1 className="best_taital">Employee Dashboard</h1>
+                <Button sx={{ margin:"2% 3%"}} variant="outlined"><Link to="/">Home</Link></Button>
+                          {/* <div className="get_bt" ><a href="#">Home</a></div> */}
+                          
+                </div>
+            </div>
+         </div>
+         </Box>
+         <Box sx={{ width: '100%', typography: 'body1' }}>
       <TabContext value={value}>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
           <TabList onChange={handleChange} aria-label="lab API tabs example">
