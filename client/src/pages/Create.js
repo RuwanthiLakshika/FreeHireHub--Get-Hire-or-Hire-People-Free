@@ -7,58 +7,64 @@ import {
   Box,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-const initial = { profile: "", exp: 0, techs: [], desc:"" };
+
+const initialFormState = { profile: "", exp: 0, techs: [], desc: "" };
 
 const Create = () => {
-    const skillSet = [
-        {
-          name: "Javascript"
-        },
-        {
-          name: "Java"
-        },
-        {
-          name: "Python"
-        },
-        {
-          name: "Django"
-        },
-        {
-          name: "Rust"
-        }
-      ];
   const navigate = useNavigate();
-  const [form, setForm] = useState(initial);
+  const [form, setForm] = useState(initialFormState);
+  const [customSkill, setCustomSkill] = useState("");
+  const [skillSet, setSkillSet] = useState([
+    { name: "Javascript" },
+    { name: "Java" },
+    { name: "Python" },
+    { name: "Django" },
+    { name: "Rust" }
+  ]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     fetch("http://localhost:8080/post", {
-      method: "POST", // or 'PUT'
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(form),
     })
-      .then((response) => console.log(response))
+      .then((response) => response.json())
       .then((data) => {
         console.log("Success:", data);
+        navigate('/employee/feed');
       })
       .catch((error) => {
         console.error("Error:", error);
       });
-      navigate('/employee/feed');
   };
 
   const { profile, exp, desc } = form;
 
   const handleChange = (e) => {
-    setForm({...form , techs : [...form.techs, e.target.value]});
-  }
+    const { value } = e.target;
+    if (form.techs.includes(value)) {
+      setForm({ ...form, techs: form.techs.filter(tech => tech !== value) });
+    } else {
+      setForm({ ...form, techs: [...form.techs, value] });
+    }
+  };
+
+  const handleCustomSkillChange = (e) => {
+    setCustomSkill(e.target.value);
+  };
+
+  const addCustomSkill = () => {
+    if (customSkill.trim() !== "") {
+      setSkillSet([...skillSet, { name: customSkill }]);
+      setCustomSkill("");
+    }
+  };
 
   return (
-
-
-    <Paper sx={{ padding:"2%"}} elevation={3}>
+    <Paper sx={{ padding: "2%", backgroundColor: "#FAF9ED" }} elevation={3}>
       <Typography sx={{ margin: "3% auto" }} align="center" variant="h5">
         Create New Post
       </Typography>
@@ -71,7 +77,7 @@ const Create = () => {
           }}
         >
           <TextField
-            type="string"
+            type="text"
             sx={{ width: "50%", margin: "2% auto" }}
             required
             onChange={(e) => setForm({ ...form, profile: e.target.value })}
@@ -80,17 +86,16 @@ const Create = () => {
             value={profile}
           />
           <TextField
-            min="0"
             type="number"
             sx={{ width: "50%", margin: "2% auto" }}
             required
-            onChange={(e) => setForm({ ...form, exp: e.target.value })}
+            onChange={(e) => setForm({ ...form, exp: parseInt(e.target.value, 10) })}
             label="Years of Experience"
             variant="outlined"
             value={exp}
           />
-           <TextField
-            type="string"
+          <TextField
+            type="text"
             sx={{ width: "50%", margin: "2% auto" }}
             required
             multiline
@@ -100,29 +105,45 @@ const Create = () => {
             variant="outlined"
             value={desc}
           />
-          <Box sx={{ margin:"1% auto"}}>
-          <h3>Please mention required skills</h3>
-         <ul>
-        {skillSet.map(({ name }, index) => {
-          return (
-            <li key={index}>
-              <div >
-                <div>
-                  <input
-                    type="checkbox"
-                    id={`custom-checkbox-${index}`}
-                    name={name}
-                    value={name}
-                    onChange={handleChange}  
-                  />
-                  <label htmlFor={`custom-checkbox-${index}`}>{name}</label>
-                </div>
-              </div>
-            </li>
-          );
-        })}
-       
-      </ul>
+          <Box sx={{ margin: "1% auto" }}>
+            <Typography variant="h6">Please mention required skills</Typography>
+            <ul>
+              {skillSet.map((skill, index) => (
+                <li key={index}>
+                  <div>
+                    <input
+                      type="checkbox"
+                      id={`custom-checkbox-${index}`}
+                      name={skill.name}
+                      value={skill.name}
+                      onChange={handleChange}
+                    />
+                    <label htmlFor={`custom-checkbox-${index}`}>{skill.name}</label>
+                  </div>
+                </li>
+              ))}
+            </ul>
+            <TextField
+              type="text"
+              sx={{ width: "50%", margin: "2% auto" }}
+              label="Add Custom Skill"
+              variant="outlined"
+              value={customSkill}
+              onChange={handleCustomSkillChange}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  e.preventDefault();
+                  addCustomSkill();
+                }
+              }}
+            />
+            <Button
+              sx={{ width: "50%", margin: "2% auto" }}
+              variant="contained"
+              onClick={addCustomSkill}
+            >
+              Add Custom Skill
+            </Button>
           </Box>
           <Button
             sx={{ width: "50%", margin: "2% auto" }}

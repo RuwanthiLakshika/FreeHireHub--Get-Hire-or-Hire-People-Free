@@ -6,6 +6,8 @@ import TabPanel from '@mui/lab/TabPanel';
 import { Button } from "@mui/material"
 import { Link } from "react-router-dom"
 import Create from './Create';
+import Header from './Header';
+import Footer from './Footer';
 
 
 
@@ -18,31 +20,8 @@ export default function Home() {
 
   return (
     <>
-    {/* <Box sx={{ display:"flex", flexDirection:"row", justifyContent:"center"}}>
-    <Typography variant='h3'sx={{ margin:"2%"}} align='center'>EMPLOYER DASHBOARD</Typography>
-    <Button sx={{ margin:"2% 3%"}} variant="outlined"><Link to="/">Home</Link></Button>
-    </Box>
-    <Box sx={{ width: '100%', typography: 'body1' }}>
-      <TabContext value={value}>
-        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-          <TabList onChange={handleChange} aria-label="lab API tabs example">
-            <Tab label="Create Post" value="1" />
-          </TabList>
-        </Box>
-        <TabPanel value="1"><Create /></TabPanel>
-      </TabContext>
-    </Box> */}
+    <Header/>
     <Box sx={{ display:"flex", flexDirection:"row", justifyContent:"center"}}>
-    <div className="portfolio_section_2 layout_padding">
-            <div className="container">
-                <div className="row">
-                <h1 className="best_taital">Employee Dashboard</h1>
-                <div className="more_bt"><Link to="/"> Home</Link></div>
-                          {/* <div className="get_bt" ><a href="#">Home</a></div> */}
-                          
-                </div>
-            </div>
-         </div>
          </Box>
          <Box sx={{ width: '100%', typography: 'body1' }}>
       <TabContext value={value}>
@@ -54,6 +33,7 @@ export default function Home() {
         <TabPanel value="1"><Create /></TabPanel>
       </TabContext>
     </Box>
+    <Footer/>
     </>
   );
 }

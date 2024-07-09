@@ -11,6 +11,8 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import { Link } from "react-router-dom";
+import Header from "./Header";
+import Footer from "./Footer";
 
 const Feed = () => {
   const [query, setQuery] = useState("");
@@ -32,10 +34,11 @@ const Feed = () => {
   }, [query]);
 console.log(post);
   return (
+    <>
+   <Header/>
     <Grid container spacing={2} sx={{ margin: "2%" }}>
-      <Grid item xs={12} sx={12} md={12} lg={12}>
-      <div className="more_bt"><Link to="/"> Home</Link></div>
-        <Box style={{marginTop:"80px"}}>
+      <Grid item xs={12} sx={12} md={12} lg={12} style={{marginBottom:"20px"}}>
+        <Box >
           <TextField
             InputProps={{
               startAdornment: (
@@ -55,7 +58,7 @@ console.log(post);
         post.map((p) => {
           return (
             <Grid key={p.id} item xs={12} md={6} lg={4}>
-              <Card sx={{ padding: "3%", overflow: "hidden", width: "84%" }}>
+              <Card sx={{ padding: "3%", overflow: "hidden", width: "84%" }} style={{backgroundColor:"#FAF9ED"}}>
                 <Typography
                   variant="h5"
                   sx={{ fontSize: "2rem", fontWeight: "600" }}
@@ -86,6 +89,8 @@ console.log(post);
           );
         })}
     </Grid>
+    <Footer/>
+    </>
   );
 };
 
