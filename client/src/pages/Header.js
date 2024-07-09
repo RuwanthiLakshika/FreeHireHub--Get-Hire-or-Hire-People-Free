@@ -10,10 +10,7 @@ function Header() {
       <span className="navbar-toggler-icon"></span>
     </button>
     <div className="collapse navbar-collapse" id="navbarNav" >
-      <ul className="navbar-nav">
-        <li className="nav-item" style={{marginLeft:"1050px"}}>
-          <Link className="nav-link" style={{color: "white"}} to="/">Home</Link>
-        </li>
+      <ul className="navbar-nav" style={{ marginLeft: "auto" }}>
         <li className="nav-item">
           <Link className="nav-link" style={{color: "white"}} to="/employer/dashboard">Hire Talent</Link>
         </li>
