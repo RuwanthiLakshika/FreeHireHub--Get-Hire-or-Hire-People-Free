@@ -29,11 +29,7 @@ FreeHireHub is an innovative web platform that bridges the gap between job seeke
 
 MongoDB Compass: Simplifies data visualization and management, providing a user-friendly interface for accessing and interacting with your MongoDB data.       
 
-MongoDB Atlas Search: Enhances search capabilities by indexing every field and text, ensuring employers can find the best match not just by title but by any relevant text in the candidates' profiles.      
-
-Client-Side Field Encryption: Ensures the security of sensitive information, giving both job seekers and employers peace of mind.          
-
-
+MongoDB Atlas Search: Enhances search capabilities by indexing every field and text, ensuring employers can find the best match not just by title but by any relevant text in the candidates' profiles.         
 ### Highlights:     
 
 
