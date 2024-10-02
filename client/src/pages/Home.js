@@ -4,7 +4,7 @@ import "../App.css"
 import Header from "./Header";
 import Footer from "./Footer";
 
-const Home = (openNav,closeNav) => {
+const Home = () => {
   return (
     <div>
      <Header/>
