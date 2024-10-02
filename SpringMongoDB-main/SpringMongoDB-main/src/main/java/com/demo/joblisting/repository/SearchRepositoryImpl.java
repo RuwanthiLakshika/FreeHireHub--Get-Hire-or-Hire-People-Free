@@ -16,7 +16,7 @@ import java.util.List;
 
 
 @Component
-public class SearchRepositoryImpl implements SearchRepository{
+public class  SearchRepositoryImpl implements SearchRepository{
 
     @Autowired
     MongoClient client;

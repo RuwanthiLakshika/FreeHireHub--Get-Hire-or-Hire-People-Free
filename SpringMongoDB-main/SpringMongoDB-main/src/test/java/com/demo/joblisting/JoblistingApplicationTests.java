@@ -1,4 +1,4 @@
-package com.telusko.joblisting;
+package com.demo.joblisting;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
